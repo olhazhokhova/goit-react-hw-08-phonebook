@@ -1,0 +1,80 @@
+.list {
+  list-style: none;
+  padding: 0;
+  max-height: 220px;
+  overflow: auto;
+  padding-right: 5px;
+  margin: 15px -5px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+}
+
+.button {
+  background-color: transparent;
+  border: 0 none;
+  padding: 0;
+  color: #256799;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.button:hover {
+  color: #b41a1a;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  position: relative;
+  border-radius: 0 0 0 10px;
+  padding: 10px;
+  box-shadow: inset 0 0 0 1px #e0e3e4;
+  margin-bottom: 1px;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-button:start:decrement,
+.scrollbar::-webkit-scrollbar-button:end:increment {
+  display: none;
+}
+
+.scrollbar::-webkit-scrollbar-track-piece {
+  background: #eff2f3;
+  border-radius: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+}
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a9a8a8;
+}
+.scrollbar::-webkit-scrollbar-thumb::-webkit-scrollbar-thumb:vertical {
+  height: 40px;
+}
+.scrollbar::-webkit-scrollbar-thumb::-webkit-scrollbar-thumb:horizontal {
+  width: 40px;
+}
+
+.label{
+  color: #9b9b9b;
+  font-size: 11px;
+  margin: 0;
+}
+
+.value{
+  margin-bottom: 5px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
