@@ -1,0 +1,35 @@
+.header{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: rgb(25, 118, 210);
+  color: #fff;
+  padding: 10px 0;
+}
+
+.header_wrap{
+  display: flex;
+  justify-content: space-between;
+}
+
+.auto{
+  margin-left: auto;
+}
+
+.link{
+  display: inline-block;
+  color: #fff;
+  padding: 5px 15px 7px;
+  text-decoration: none;
+  transition: background-color .15s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 5px
+}
+
+.link:hover {
+  background-color: rgba(0, 0, 0, .04);
+}
+
+.link.active {
+  background-color: rgba(0, 0, 0, .04);
+}

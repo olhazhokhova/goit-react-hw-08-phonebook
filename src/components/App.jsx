@@ -1,28 +1,25 @@
-import { useFetchContactsQuery } from 'redux/contacts';
+import { Suspense } from 'react';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import './App.css';
-import AddContacts from './AddContacts';
+import Header from './Header';
+import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
 import ContactList from './ContactList';
-import Filter from './Filter';
-import Spinner from './Spinner';
 
 const App = () => {
-  const { data: contacts,  isFetching } = useFetchContactsQuery();
 
   return (
     <div className="app-content">
-      <h1>Phonebook</h1>
-      <AddContacts contacts={contacts} />
-
-      {isFetching && <Spinner />}
-      
-      {contacts && (
-        <>
-          <h2>Contacts</h2>
-          <Filter />
-          <ContactList contacts={contacts} />
-        </>
-      )}
-
+      <Header />
+      <Suspense fallback={<></>}>
+        <Routes>
+          <Route path="/" element={<div className='start'>Для начала работы войдите в личный кабинет <br /> или зарегистрируйтесь</div>} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/contacts" element={<ContactList />} />
+        </Routes>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

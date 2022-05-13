@@ -1,0 +1,8 @@
+.area{
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+.ava{
+  border-radius: 25px
+}

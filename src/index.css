@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e7ecf2;
+  background-color: #fff;
 }
 
 code {
@@ -20,8 +20,5 @@ img {
 }
 
 #root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  padding-top: 70px;
 }

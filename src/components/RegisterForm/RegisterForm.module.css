@@ -1,0 +1,9 @@
+.wrap{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.button{
+  margin-top: 15px !important;
+  height: 40px; 
+}
