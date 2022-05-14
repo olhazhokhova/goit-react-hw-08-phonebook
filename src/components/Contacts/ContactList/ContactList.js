@@ -3,26 +3,30 @@ import { useSelector } from 'react-redux';
 import { MdDeleteOutline } from 'react-icons/md';
 import PropTypes from 'prop-types';
 import s from './ContactList.module.css';
-import { useDeleteContactMutation } from 'redux/contacts';
+import {
+  useFetchContactsQuery,
+  useDeleteContactMutation,
+} from 'redux/contacts';
 
-const ContactList = ({ contacts }) => {
+const ContactList = () => {
   const [deleteContact] = useDeleteContactMutation();
+  const { data: contacts, isFetching } = useFetchContactsQuery();
 
-  const filter = useSelector(state => state.filter.value);
-  const filterContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(filter.toLowerCase())
-  );
+  // const filter = useSelector(state => state.filter.value);
+  // const filterContacts = contacts.filter(({ name }) =>
+  //   name.toLowerCase().includes(filter.toLowerCase())
+  // );
 
   return (
     <ul className={`${s.list} ${s.scrollbar}`}>
-      {filterContacts.map(({ id, name, phone }) => {
+      {contacts?.map(({ id, name, number }) => {
         return (
           <li key={id} className={s.item}>
             <span>
               <label className={s.label}>Name</label>
               <span className={s.value}>{name}</span>
               <label className={s.label}>Phone number</label>
-              <span>{phone}</span>
+              <span>{number}</span>
             </span>
             <button className={s.button} onClick={() => deleteContact(id)}>
               <MdDeleteOutline size="16" />
@@ -41,7 +45,7 @@ ContactList.propTypes = {
     PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
-      phone: PropTypes.string,
+      number: PropTypes.string,
     })
   ),
 };

@@ -15,7 +15,7 @@ const validationSchema = Yup.object({
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
     )
     .required(),
-  phone: Yup.string()
+  number: Yup.string()
     .trim()
     .matches(
       /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
@@ -51,7 +51,7 @@ const AddContacts = ({ contacts }) => {
   return (
     <div className={s.formWrap}>
       <Formik
-        initialValues={{ name: '', phone: '' }}
+        initialValues={{ name: '', number: '' }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
@@ -63,8 +63,8 @@ const AddContacts = ({ contacts }) => {
             {msg => <div style={{ color: 'red', fontSize: '13px' }}>{msg}</div>}
           </ErrorMessage>
           <label htmlFor="name">Number</label>
-          <Field type="tel" name="phone" />
-          <ErrorMessage name="phone">
+          <Field type="tel" name="number" />
+          <ErrorMessage name="number">
             {msg => <div style={{ color: 'red', fontSize: '13px' }}>{msg}</div>}
           </ErrorMessage>
           <button type="submit" className={s.button}>
@@ -83,7 +83,7 @@ AddContacts.propTypes = {
     PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
-      phone: PropTypes.string,
+      number: PropTypes.string,
     })
   ),
 };

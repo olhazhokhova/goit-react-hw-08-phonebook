@@ -21,10 +21,10 @@ const Header = () => {
           ) : (
             <>
               <NavLink to="/register" className={`${s.link} ${s.auto}`}>
-                Регистрация
+                Зарегистрироваться
               </NavLink>
               <NavLink to="/login" className={s.link}>
-                Логин
+                Войти
               </NavLink>
             </>
           )}

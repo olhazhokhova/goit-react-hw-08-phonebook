@@ -68,6 +68,7 @@ const RegisterForm = () => {
             size="small"
             margin="normal"
             fullWidth
+            minLength="7"
             onChange={handleChange}
           />
           <Button
