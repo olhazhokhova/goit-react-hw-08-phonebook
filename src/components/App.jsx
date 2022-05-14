@@ -6,6 +6,8 @@ import Header from './Header';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
 import Contacts from './Contacts';
+import PrivateRoute from './PrivateRoute'
+import PublicRoute from './PublicRoute'
 import { authOperations } from '../redux/auth';
 
 const App = () => {
@@ -21,9 +23,30 @@ const App = () => {
       <Suspense fallback={<></>}>
         <Routes>
           <Route path="/" element={<div className='start'>Для начала работы войдите в личный кабинет <br /> или зарегистрируйтесь 😉</div>} />
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/contacts" element={<Contacts />} />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute restricted redirectTo='/contacts'>
+                <RegisterForm />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute restricted redirectTo='/contacts'>
+                <LoginForm />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo='/login'>
+                <Contacts />
+              </PrivateRoute>
+            }
+          />
         </Routes>
         <Outlet />
       </Suspense>

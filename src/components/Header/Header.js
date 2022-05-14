@@ -13,11 +13,13 @@ const Header = () => {
     <header className={s.header}>
       <Container>
         <div className={s.header_wrap}>
-          <NavLink to="/contacts" className={s.link}>
-            Контакты
-          </NavLink>
           {isLoggedIn ? (
-            <UserMenu />
+            <>
+              <NavLink to="/contacts" className={s.link}>
+                Контакты
+              </NavLink>
+              <UserMenu />
+            </>
           ) : (
             <>
               <NavLink to="/register" className={`${s.link} ${s.auto}`}>
