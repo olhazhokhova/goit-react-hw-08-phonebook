@@ -2,7 +2,7 @@ import React from 'react';
 import { useAddContactMutation } from 'redux/contacts';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 import s from './AddContacts.module.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -56,13 +56,16 @@ const AddContacts = ({ contacts }) => {
         onSubmit={handleSubmit}
       >
         <Form autoComplete="off">
-          <ToastContainer />
-          <label htmlFor="name">Name</label>
+          <label className={s.label} htmlFor="name">
+            Name
+          </label>
           <Field type="text" name="name" />
           <ErrorMessage name="name">
             {msg => <div style={{ color: 'red', fontSize: '13px' }}>{msg}</div>}
           </ErrorMessage>
-          <label htmlFor="name">Number</label>
+          <label className={s.label} htmlFor="name">
+            Number
+          </label>
           <Field type="tel" name="number" />
           <ErrorMessage name="number">
             {msg => <div style={{ color: 'red', fontSize: '13px' }}>{msg}</div>}

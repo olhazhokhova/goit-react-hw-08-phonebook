@@ -38,7 +38,7 @@ input {
   background-color: #2ea7f3;
 }
 
-label {
+.label {
   display: block;
   margin-bottom: 5px;
   margin-top: 5px;

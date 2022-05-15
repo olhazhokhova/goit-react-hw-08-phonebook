@@ -61,6 +61,7 @@ const LoginForm = () => {
             variant="contained"
             margin="normal"
             fullWidth
+            disabled={email.length > 6 && password.length > 6 ? false : true}
           >
             Войти
           </Button>

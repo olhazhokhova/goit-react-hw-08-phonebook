@@ -77,6 +77,11 @@ const RegisterForm = () => {
             variant="contained"
             margin="normal"
             fullWidth
+            disabled={
+              name.length > 3 && email.length > 6 && password.length > 6
+                ? false
+                : true
+            }
           >
             Зарегистрироваться
           </Button>

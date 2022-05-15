@@ -1,6 +1,7 @@
 import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 import Header from './Header';
 import RegisterForm from './RegisterForm';
@@ -19,9 +20,9 @@ const App = () => {
   }, [dispatch])
 
   return (
-    !isFetchingCurrentUser ? (<div className="app-content">
+    !isFetchingCurrentUser && (<div className="app-content">
       <Header />
-      <Suspense fallback={<></>}>
+      <Suspense fallback={<div>Загружаем ...</div>}>
         <Routes>
           <Route path="/" element={<div className='start'>Для начала работы войдите в личный кабинет <br /> или зарегистрируйтесь 😉</div>} />
           <Route
@@ -51,9 +52,8 @@ const App = () => {
         </Routes>
         <Outlet />
       </Suspense>
+      <ToastContainer />
     </div>)
-      :
-      null
   );
 };
 
