@@ -29,11 +29,10 @@ export const store = configureStore({
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({
-      ...contactsApi.middleware,
       serializableCheck: {
         ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    });
+    }).concat(contactsApi.middleware);
   },
   devTools: process.env.NODE_ENV === 'development',
 });

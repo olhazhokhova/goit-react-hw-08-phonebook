@@ -10,16 +10,16 @@ import {
 
 const ContactList = () => {
   const [deleteContact] = useDeleteContactMutation();
-  const { data: contacts, isFetching } = useFetchContactsQuery();
+  const { data: contacts } = useFetchContactsQuery();
 
-  // const filter = useSelector(state => state.filter.value);
-  // const filterContacts = contacts.filter(({ name }) =>
-  //   name.toLowerCase().includes(filter.toLowerCase())
-  // );
+  const filter = useSelector(state => state.filter.value);
+  const filterContacts = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <ul className={`${s.list} ${s.scrollbar}`}>
-      {contacts?.map(({ id, name, number }) => {
+      {filterContacts?.map(({ id, name, number }) => {
         return (
           <li key={id} className={s.item}>
             <span>

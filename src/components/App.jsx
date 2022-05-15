@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import './App.css';
 import Header from './Header';
@@ -8,17 +8,18 @@ import LoginForm from './LoginForm';
 import Contacts from './Contacts';
 import PrivateRoute from './PrivateRoute'
 import PublicRoute from './PublicRoute'
-import { authOperations } from '../redux/auth';
+import { authOperations, authSelectors } from '../redux/auth';
 
 const App = () => {
   const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser())
   }, [dispatch])
 
   return (
-    <div className="app-content">
+    !isFetchingCurrentUser ? (<div className="app-content">
       <Header />
       <Suspense fallback={<></>}>
         <Routes>
@@ -50,7 +51,9 @@ const App = () => {
         </Routes>
         <Outlet />
       </Suspense>
-    </div>
+    </div>)
+      :
+      null
   );
 };
 
